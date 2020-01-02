@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>Pesawat luar angkasa </title>
+    <style>
+        #canvas {
+            border: 1px solid;
+            width: 850px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas">browser anda tidak support TAG canvas</canvas>
+
+    <script>
+        var bg = new Image();
+        bg.src = "image/bg.jpg";
+
+        var pesawat = new Image();
+        pesawat.src = "image/pesawat.png";
+
+        function aksikanvas() {
+
+            document.addEventListener('keydown', function(event) {
+                if (event.keyCode == 37) {
+
+                }
+            })
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+
+            canvas.width = canvas.scrollWidth;
+            canvas.height = canvas.scrollHeight;
+
+            var cW = canvas.width;
+            var cH = canvas.height;
+
+            function Bg() {
+                this.x = 0, this.y = 0;
+                this.render = function() {
+                    ctx.drawImage(bg, this.x--, this.y);
+                    if (this.x == -1699) {
+                        this.x = 0;
+                    }
+                }
+            }
+            var back = new Bg();
+
+            function pesawat() {
+                this.x = 100, this.y = 200, this.w = 100, this.h = 100;
+                this.render = function() {
+                    ctx.drawImage(pesawat, this.x, this.y);
+                }
+            }
+
+
+
+            function animasi() {
+                ctx.save();
+                ctx.clearRect(0, 0, cW, cH);
+                back.render();
+                Pesawat1.render();
+                ctx.restore();
+
+            }
+            var interval = setInterval(animasi, 30);
+        }
+        window.onload = aksikanvas;
+    </script>
+</body>
+
+
+</html>
